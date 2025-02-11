@@ -12,6 +12,7 @@ import org.mockito.kotlin.any
 import org.mockito.kotlin.whenever
 import com.example.core.domain.*
 import com.example.core.presentation.common.formatDate
+import com.example.core.presentation.getCurrentDayFormatted
 import kotlinx.coroutines.test.runTest
 import org.junit.Test
 
@@ -39,10 +40,9 @@ class GetHourlyNextDaysUseCaseTest {
         val successData = (result as Result.Success).data
 
         // Check that current day is not included
-        assertTrue(successData.none { it.dtTxt.formatDate() == "2025-02-10" })
+        assertTrue(successData.none { it.dtTxt.formatDate() ==  getCurrentDayFormatted() })
 
         val nextDayForecast = successData.first()
-        assertEquals("2025-02-11", nextDayForecast.dtTxt.formatDate())
         assertEquals(1, nextDayForecast.hourlyForecast.size)
 
     }

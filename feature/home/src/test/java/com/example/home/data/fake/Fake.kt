@@ -155,48 +155,48 @@ val fakeForecastDto = ForecastDto(
 
 val fakeForecastModelItem = ForecastModelItem(
     dt = 1638327600,
-    dtTxt = "2025-02-11 15:00:00",
+    dtTxt = "2025-02-10 15:00:00",
     main = com.example.core.domain.model.Main(
-        temp = 17.0,
-        feelsLike = 14.0,
-        tempMin = 15.0,
-        tempMax = 19.0,
-        pressure = 1016,
-        seaLevel = 1019,
-        grndLevel = 1013,
-        humidity = 80
+        temp = 18.0,
+        feelsLike = 15.0,
+        tempMin = 16.0,
+        tempMax = 20.0,
+        pressure = 1015,
+        seaLevel = 1018,
+        grndLevel = 1012,
+        humidity = 75
     ),
     weather = listOf(
         com.example.core.domain.model.Weather(
-            id = 801,
-            main = "Clouds",
-            description = "few clouds",
-            icon = "02d"
+            id = 800,
+            main = "Clear",
+            description = "clear sky",
+            icon = "01d"
         )
     ),
     wind = com.example.core.domain.model.Wind(
-        speed = 3.2,
-        deg = 340,
-        gust = 4.5
+        speed = 3.6,
+        deg = 350,
+        gust = 5.0
     ),
-    clouds = Clouds(all = 40),
-    visibility = 8000,
-    pop = 0.1,
+    clouds = Clouds(all = 20),
+    visibility = 10000,
+    pop = 0.0,
     sys = ForecastSys(pod = "d"),
     hourlyForecast = listOf(
         HourlyForecast(
-            weatherId = 801,
+            weatherId = 800,
             main = com.example.core.domain.model.Main(
-                temp = 17.0,
-                feelsLike = 14.0,
-                tempMin = 15.0,
-                tempMax = 19.0,
-                pressure = 1016,
-                seaLevel = 1019,
-                grndLevel = 1013,
-                humidity = 80
+                temp = 18.0,
+                feelsLike = 15.0,
+                tempMin = 16.0,
+                tempMax = 20.0,
+                pressure = 1015,
+                seaLevel = 1018,
+                grndLevel = 1012,
+                humidity = 75
             ),
-            hour = "15:00"
+            hour = "12:00"
         )
     )
 )
