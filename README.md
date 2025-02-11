@@ -40,7 +40,7 @@ weather-app/
    - Create a `local.properties` file in the root Android project (if not exists).
    - Add the following line with your API key:
      ```properties
-     API_KEY="your_openweather_api_key"
+     API_KEY=your_openweather_api_key
      ```
 
 3. **Sync the project** in Android Studio.
