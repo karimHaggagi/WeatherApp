@@ -65,10 +65,3 @@ weather-app/
 - You **must** add `API_KEY="your_openweather_api_key"` in `local.properties`, or the app will fail to fetch weather data.
 - The API key is **not** included in the project for security reasons.
 
-## 📜 License
-This project is open-source and available under the [MIT License](LICENSE).
-
----
-
-Made with ❤️ using Jetpack Compose!
-
