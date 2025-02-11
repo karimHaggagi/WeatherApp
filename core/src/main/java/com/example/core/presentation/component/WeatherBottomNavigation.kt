@@ -11,32 +11,33 @@ import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+//noinspection UsingMaterialAndMaterial3Libraries
 import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem
 import androidx.compose.material.Icon
-import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Home
 import androidx.compose.material.icons.outlined.Search
+import androidx.compose.material.icons.outlined.Settings
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Color.Companion.Blue
-import androidx.compose.ui.graphics.Color.Companion.Green
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.core.R
 import com.example.core.presentation.Screens
+import com.example.core.presentation.preview.PreviewLightDarkMode
 
 /**
  * created by Karim Haggagi Hassan Elsayed on 2/10/25
@@ -46,7 +47,8 @@ fun WeatherBottomNavigation(modifier: Modifier = Modifier, onIconClick: (Screens
 
     var isSelected by remember { mutableStateOf<Screens>(Screens.Home) }
     BottomNavigation(
-        modifier = modifier.navigationBarsPadding()
+        modifier = modifier
+            .navigationBarsPadding()
             .padding(20.dp)
             .background(color = Color.Black, shape = RoundedCornerShape(40))
             .padding(start = 16.dp, end = 16.dp, top = 8.dp, bottom = 8.dp),
@@ -69,6 +71,15 @@ fun WeatherBottomNavigation(modifier: Modifier = Modifier, onIconClick: (Screens
             onIconClick = {
                 isSelected = Screens.Search
                 onIconClick(Screens.Search)
+            })
+
+        WeatherBottomNavigationIem(
+            title = R.string.search,
+            icon = Icons.Outlined.Settings,
+            isSelected = isSelected == Screens.Settings,
+            onIconClick = {
+                isSelected = Screens.Settings
+                onIconClick(Screens.Settings)
             })
     }
 }
@@ -115,8 +126,8 @@ fun RowScope.WeatherBottomNavigationIem(
         })
 }
 
-@Preview
+@PreviewLightDarkMode
 @Composable
 private fun WeatherBottomNavigationPreview() {
-    WeatherBottomNavigation{}
+    WeatherBottomNavigation {}
 }

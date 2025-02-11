@@ -13,4 +13,8 @@ sealed class Screens {
     // Define a profile route that takes an ID
     @Serializable
     data object Search : Screens()
+
+    @Serializable
+    data object Settings : Screens()
+
 }

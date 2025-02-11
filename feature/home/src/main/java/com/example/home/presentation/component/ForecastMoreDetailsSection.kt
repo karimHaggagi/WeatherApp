@@ -9,6 +9,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.core.presentation.component.ForecastMoreDetails
+import com.example.core.presentation.preview.PreviewLightDarkMode
 import com.example.home.presentation.ForecastUi
 
 /**
@@ -27,7 +28,7 @@ fun ForecastMoreDetailsSection(modifier: Modifier = Modifier, forecastUi: Foreca
     }
 }
 
-@Preview(showBackground = true)
+@PreviewLightDarkMode
 @Composable
 private fun ForecastMoreDetailsSectionPreview() {
     ForecastMoreDetailsSection(forecastUi = ForecastUi())

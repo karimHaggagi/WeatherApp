@@ -17,6 +17,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.core.R
 import com.example.core.presentation.getWeatherIconForPreview
+import com.example.core.presentation.preview.PreviewLightDarkMode
 
 /**
  * created by Karim Haggagi Hassan Elsayed on 2/3/25
@@ -49,7 +50,7 @@ fun ConditionsSection(
     }
 }
 
-@Preview
+@PreviewLightDarkMode
 @Composable
 private fun ConditionsSectionPreview() {
     ConditionsSection(

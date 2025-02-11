@@ -14,6 +14,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.core.R
 import com.example.core.presentation.common.WeatherCondition
+import com.example.core.presentation.preview.PreviewLightDarkMode
 
 /**
  * created by Karim Haggagi Hassan Elsayed on 2/3/25
@@ -63,7 +64,7 @@ fun ForecastMoreDetails(modifier: Modifier = Modifier, condition: WeatherConditi
 
 }
 
-@Preview(showBackground = true)
+@PreviewLightDarkMode
 @Composable
 private fun ForecastMoreDetailsPreview() {
     ForecastMoreDetails(condition = WeatherCondition())

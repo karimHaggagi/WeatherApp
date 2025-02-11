@@ -28,6 +28,7 @@ import com.example.core.presentation.component.Subtitle
 import com.example.core.presentation.component.SubtitleSmall
 import com.example.core.R
 import com.example.core.presentation.component.ForecastMoreDetails
+import com.example.core.presentation.preview.PreviewLightDarkMode
 import com.example.search.presentation.SavedLocations
 
 /**
@@ -119,7 +120,7 @@ fun SavedItem(modifier: Modifier = Modifier, savedLocations: SavedLocations) {
     }
 }
 
-@Preview
+@PreviewLightDarkMode
 @Composable
 private fun SavedIemPreview() {
     SavedItem(savedLocations = SavedLocations())

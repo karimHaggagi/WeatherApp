@@ -26,12 +26,13 @@ import androidx.compose.ui.graphics.Shadow
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.core.presentation.common.WeatherUi
 import com.example.core.presentation.component.Subtitle
 import com.example.core.presentation.component.SubtitleSmall
 import com.example.core.R
+import com.example.core.presentation.preview.PreviewLightDarkMode
+import com.example.core.presentation.theme.WeatherAppTheme
 
 /**
  * created by Karim Haggagi Hassan Elsayed on 2/3/25
@@ -135,8 +136,10 @@ fun CurrentWeatherWidget(modifier: Modifier = Modifier, state: WeatherUi) {
     }
 }
 
-@Preview
+@PreviewLightDarkMode
 @Composable
 private fun CurrentWeatherWidgetPreview() {
-    CurrentWeatherWidget(state = WeatherUi())
+    WeatherAppTheme {
+        CurrentWeatherWidget(state = WeatherUi())
+    }
 }

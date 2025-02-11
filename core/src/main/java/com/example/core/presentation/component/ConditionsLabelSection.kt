@@ -19,6 +19,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.core.R
+import com.example.core.presentation.preview.PreviewLightDarkMode
 
 /**
  * created by Karim Haggagi Hassan Elsayed on 2/3/25
@@ -51,7 +52,7 @@ fun ConditionsLabelSection(modifier: Modifier,
 }
 
 
-@Preview(showBackground = true)
+@PreviewLightDarkMode
 @Composable
 private fun ConditionsLabelSectionPreview() {
     ConditionsLabelSection(modifier = Modifier, drawable = com.example.weather.R.drawable.ic_wind, conditionLabel = R.string.wind_label)

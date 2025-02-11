@@ -20,6 +20,7 @@ import com.example.home.R
 import com.example.home.presentation.component.CurrentWeatherWidget
 import com.example.home.presentation.component.ForecastItem
 import com.example.core.presentation.component.OtherConditionsSection
+import com.example.core.presentation.preview.PreviewLightDarkMode
 
 /**
  * created by Karim Haggagi Hassan Elsayed on 2/3/25
@@ -72,7 +73,7 @@ fun HomeScreen(modifier: Modifier = Modifier, state: HomeUiState) {
     }
 }
 
-@Preview(showBackground = true)
+@PreviewLightDarkMode
 @Composable
 private fun HomeScreenPreview() {
     HomeScreen(state = HomeUiState())

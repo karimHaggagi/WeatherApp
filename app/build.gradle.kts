@@ -67,6 +67,7 @@ dependencies {
     implementation(projects.core)
     implementation(projects.feature.home)
     implementation(projects.feature.search)
+    implementation(projects.feature.settings)
 
     //hilt
     implementation(libs.hilt.android)

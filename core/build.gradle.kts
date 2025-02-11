@@ -9,6 +9,11 @@ plugins {
     alias(libs.plugins.kotlin.serialization)
 
 }
+val localProperties = Properties().apply {
+    load(rootProject.file("local.properties").inputStream())
+}
+
+val apiKey = localProperties.getProperty("API_KEY") ?: System.getenv("API_KEY") ?: ""
 
 android {
     namespace = "com.example.core"
@@ -20,9 +25,8 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
 
-        val properties =  Properties()
-        properties.load(project.rootProject.file("local.properties").inputStream())
-        buildConfigField ("String", "API_KEY", "\"${System.getenv("API_KEY") ?: project.hasProperty("API_KEY")}\"")
+        buildConfigField("String", "API_KEY", "\"$apiKey\"")
+
     }
 
     buildTypes {
@@ -60,8 +64,8 @@ dependencies {
     api(libs.androidx.ui.graphics)
     api(libs.androidx.ui.tooling.preview)
     api(libs.androidx.material3)
-    api (libs.androidx.material.icons.extended)
-    implementation (libs.androidx.material)
+    api(libs.androidx.material.icons.extended)
+    implementation(libs.androidx.material)
 
 
     implementation(libs.androidx.datastore.preferences)
@@ -71,22 +75,22 @@ dependencies {
     debugApi(libs.androidx.ui.tooling.preview)
 
     // JSON serialization library, works with the Kotlin serialization plugin.
-    implementation (libs.kotlinx.serialization.json)
+    implementation(libs.kotlinx.serialization.json)
 
     // Compose Navigation
     api(libs.androidx.navigation.compose)
     // retrofit
-    api (libs.retrofit)
-    implementation (libs.converter.gson)
+    api(libs.retrofit)
+    implementation(libs.converter.gson)
 
     // okhttp3
-    implementation (libs.okhttp)
-    implementation (libs.logging.interceptor)
+    implementation(libs.okhttp)
+    implementation(libs.logging.interceptor)
 
     //hilt
-    implementation (libs.hilt.android)
+    implementation(libs.hilt.android)
     ksp(libs.hilt.compiler)
-    api (libs.androidx.hilt.navigation.compose)
+    api(libs.androidx.hilt.navigation.compose)
 
     //room
     implementation(libs.androidx.room.runtime)
@@ -97,7 +101,7 @@ dependencies {
     ksp(libs.androidx.room.compiler)
 
     // my library to display weather icons
-    implementation (libs.formatweather)
+    implementation(libs.formatweather)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
@@ -105,27 +109,27 @@ dependencies {
 
 
     // testing
-    testImplementation (libs.hamcrest.all)
-    testImplementation (libs.androidx.core.testing)
-    testImplementation (libs.kotlinx.coroutines.test)
-    testImplementation (libs.truth)
-    testImplementation (libs.mockito.core)
-    testImplementation (libs.mockito.inline)
+    testImplementation(libs.hamcrest.all)
+    testImplementation(libs.androidx.core.testing)
+    testImplementation(libs.kotlinx.coroutines.test)
+    testImplementation(libs.truth)
+    testImplementation(libs.mockito.core)
+    testImplementation(libs.mockito.inline)
 
-    testImplementation (libs.turbine)
+    testImplementation(libs.turbine)
     testImplementation(libs.junit)
 
-    testImplementation (libs.mockito.core)
-    testImplementation (libs.mockito.kotlin)
+    testImplementation(libs.mockito.core)
+    testImplementation(libs.mockito.kotlin)
 
 
     // AndroidX Test - Instrumented testing
-    androidTestImplementation (libs.androidx.junit.ktx)
-    androidTestImplementation (libs.androidx.room.testing)
-    androidTestImplementation (libs.androidx.core.testing)
-    androidTestImplementation (libs.androidx.espresso.contrib)
-    androidTestImplementation (libs.androidx.espresso.intents)
-    androidTestImplementation (libs.androidx.idling.concurrent)
+    androidTestImplementation(libs.androidx.junit.ktx)
+    androidTestImplementation(libs.androidx.room.testing)
+    androidTestImplementation(libs.androidx.core.testing)
+    androidTestImplementation(libs.androidx.espresso.contrib)
+    androidTestImplementation(libs.androidx.espresso.intents)
+    androidTestImplementation(libs.androidx.idling.concurrent)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 }

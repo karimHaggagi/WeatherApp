@@ -11,6 +11,7 @@ import androidx.navigation.compose.composable
 import com.example.core.presentation.Screens
 import com.example.home.presentation.HomeRoute
 import com.example.search.presentation.SearchRoute
+import com.example.settings.presentation.SettingsRoute
 
 /**
  * created by Karim Haggagi Hassan Elsayed on 2/10/25
@@ -31,6 +32,10 @@ fun WeatherNavigation(
         }
         composable<Screens.Search> {
             SearchRoute()
+        }
+
+        composable<Screens.Settings> {
+            SettingsRoute()
         }
     }
 }

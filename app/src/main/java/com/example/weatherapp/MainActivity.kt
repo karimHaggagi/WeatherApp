@@ -27,6 +27,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
@@ -36,9 +37,8 @@ import com.example.core.presentation.common.CheckForPermissions
 import com.example.core.presentation.common.OnPermissionDenied
 import com.example.core.presentation.component.WeatherBottomNavigation
 import com.example.core.presentation.createLocationRequest
-import com.example.home.presentation.HomeRoute
+import com.example.core.presentation.theme.WeatherAppTheme
 import com.example.weatherapp.component.InfoScreens
-import com.example.weatherapp.ui.theme.WeatherAppTheme
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationCallback
 import com.google.android.gms.location.LocationRequest
@@ -94,7 +94,8 @@ class MainActivity : ComponentActivity() {
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
 
         setContent {
-            WeatherAppTheme {
+            val isDarkTheme by mainViewModel.darkThemeFlow.collectAsStateWithLifecycle()
+            WeatherAppTheme(darkTheme = isDarkTheme) {
                 val navController = rememberNavController()
 
                 val scope = rememberCoroutineScope()
@@ -200,7 +201,7 @@ class MainActivity : ComponentActivity() {
     }
 
 
-    fun navigateToTopLevelDestination(
+    private fun navigateToTopLevelDestination(
         navController: NavHostController,
         topLevelDestination: Screens
     ) {
@@ -231,6 +232,13 @@ class MainActivity : ComponentActivity() {
                     topLevelNavOptions
                 )
             }
+
+            Screens.Settings -> {
+                navController.navigate(
+                    Screens.Settings,
+                    topLevelNavOptions
+                )
+            }
         }
     }
 
@@ -241,8 +249,8 @@ class MainActivity : ComponentActivity() {
                 location.run {
                     mainViewModel.setEvent(
                         MainContract.MainEvent.SaveLocation(
-                            30.09009009009009,
-                            30.09009009009009
+                            location.latitude,
+                            location.longitude
                         )
                     )
                 }

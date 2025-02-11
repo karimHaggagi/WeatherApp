@@ -12,6 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.core.presentation.preview.PreviewLightDarkMode
 import com.example.weatherapp.R
 
 /**
@@ -35,7 +36,7 @@ fun InfoScreens(@StringRes message: Int) {
     }
 }
 
-@Preview
+@PreviewLightDarkMode
 @Composable
 fun InfoScreensPreview() {
     InfoScreens(message = R.string.location_no_permission_screen_description)

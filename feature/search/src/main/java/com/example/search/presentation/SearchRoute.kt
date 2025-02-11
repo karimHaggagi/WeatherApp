@@ -43,6 +43,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.core.R
 import com.example.core.presentation.ScreenContainer
 import com.example.core.presentation.common.WeatherUi
+import com.example.core.presentation.preview.PreviewLightDarkMode
 import com.example.search.presentation.component.DialogResult
 import com.example.search.presentation.component.SavedItem
 
@@ -133,7 +134,7 @@ fun SearchScreen(
     }
 }
 
-@Preview
+@PreviewLightDarkMode
 @Composable
 private fun SearchScreenPreview() {
     SearchScreen(state = SearchUiState(weatherUi = WeatherUi()))

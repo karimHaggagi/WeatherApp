@@ -34,6 +34,7 @@ import androidx.compose.ui.unit.dp
 import com.example.core.R
 import com.example.core.presentation.common.WeatherUi
 import com.example.core.presentation.getWeatherIconForPreview
+import com.example.core.presentation.preview.PreviewLightDarkMode
 import com.example.home.presentation.ForecastUi
 
 /**
@@ -128,7 +129,7 @@ fun ForecastItem(
     }
 }
 
-@Preview
+@PreviewLightDarkMode
 @Composable
 private fun ForecastItemPreview() {
 

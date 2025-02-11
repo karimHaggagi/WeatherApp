@@ -24,6 +24,7 @@ import androidx.compose.ui.unit.dp
 import com.example.core.R
 import com.example.home.domain.model.HourlyForecast
 import com.example.core.domain.model.Main
+import com.example.core.presentation.preview.PreviewLightDarkMode
 
 /**
  * created by Karim Haggagi Hassan Elsayed on 2/3/25
@@ -71,13 +72,13 @@ fun HourlyDataElement(modifier: Modifier = Modifier, hourlyForecast: HourlyForec
     }
 }
 
-@Preview(showBackground = true)
+@PreviewLightDarkMode
 @Composable
 private fun HourlyDataElementRowPreview() {
     HourlyDataElementRow(hourlyForecast = emptyList())
 }
 
-@Preview(showBackground = true)
+@PreviewLightDarkMode
 @Composable
 private fun HourlyDataElementPreview() {
     HourlyDataElement(
