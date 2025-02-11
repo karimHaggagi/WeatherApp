@@ -55,6 +55,6 @@ private fun ConditionsSectionPreview() {
         modifier = Modifier,
         conditionText = "Condition",
         conditionLabel = R.string.wind_label,
-        drawable = R.drawable.ic_wind
+        drawable = com.example.weather.R.drawable.ic_wind
     )
 }

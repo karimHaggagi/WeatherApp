@@ -30,13 +30,13 @@ fun OtherConditionsSection(
             ConditionsSection(
                 conditionText = "${state.pressure}",
                 conditionLabel = R.string.pressure_label,
-                drawable = R.drawable.ic_pressure
+                drawable = com.example.weather.R.drawable.ic_pressure
             )
             Spacer(modifier = Modifier.width(8.dp))
             ConditionsSection(
                 conditionText = "${state.windSpeed}",
                 conditionLabel = R.string.wind_label,
-                drawable = R.drawable.ic_wind
+                drawable = com.example.weather.R.drawable.ic_wind
             )
         }
         Spacer(
@@ -48,13 +48,13 @@ fun OtherConditionsSection(
             ConditionsSection(
                 conditionText = "${state.visibility}",
                 conditionLabel = R.string.visibility_label,
-                drawable = R.drawable.ic_visibility
+                drawable = com.example.weather.R.drawable.ic_visibility
             )
             Spacer(modifier = Modifier.width(8.dp))
             ConditionsSection(
                 conditionText = "${state.humidity}",
                 conditionLabel = R.string.humidity_label,
-                drawable = R.drawable.ic_humidity
+                drawable = com.example.weather.R.drawable.ic_humidity
             )
         }
     }
