@@ -1,4 +1,4 @@
-package com.example.home.presentation.component
+package com.example.core.presentation.component
 
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
@@ -15,8 +15,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.core.presentation.component.ConditionsLabelSection
 import com.example.core.R
+import com.example.core.presentation.getWeatherIconForPreview
+
 /**
  * created by Karim Haggagi Hassan Elsayed on 2/3/25
  **/
@@ -55,6 +56,6 @@ private fun ConditionsSectionPreview() {
         modifier = Modifier,
         conditionText = "Condition",
         conditionLabel = R.string.wind_label,
-        drawable = R.drawable.ic_wind
+        drawable = getWeatherIconForPreview()
     )
 }

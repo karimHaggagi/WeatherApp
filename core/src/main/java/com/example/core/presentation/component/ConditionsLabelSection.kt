@@ -54,5 +54,5 @@ fun ConditionsLabelSection(modifier: Modifier,
 @Preview(showBackground = true)
 @Composable
 private fun ConditionsLabelSectionPreview() {
-    ConditionsLabelSection(modifier = Modifier, drawable = R.drawable.ic_wind, conditionLabel = R.string.wind_label)
+    ConditionsLabelSection(modifier = Modifier, drawable = com.example.weather.R.drawable.ic_wind, conditionLabel = R.string.wind_label)
 }

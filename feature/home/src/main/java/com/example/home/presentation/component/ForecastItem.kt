@@ -33,6 +33,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.core.R
 import com.example.core.presentation.common.WeatherUi
+import com.example.core.presentation.getWeatherIconForPreview
 import com.example.home.presentation.ForecastUi
 
 /**
@@ -138,7 +139,7 @@ private fun ForecastItemPreview() {
                 date = "forecastDate",
                 maxTemp = 90.0,
                 minTemp = 40.0,
-                weatherId = R.drawable.sea_rainy
+                weatherId = getWeatherIconForPreview()
             )
         )
     )

@@ -1,7 +1,7 @@
 package com.example.core.presentation.common
 
 import androidx.annotation.DrawableRes
-import com.example.core.presentation.iconIdForWeatherCondition
+import com.example.core.presentation.getWeatherIconBasedOnId
 
 /**
  * created by Karim Haggagi Hassan Elsayed on 2/10/25
@@ -17,7 +17,7 @@ data class WeatherUi(
  val date: String = "",
 ) {
  @get:DrawableRes
- val weatherIcon: Int get() = iconIdForWeatherCondition(weatherId)
+ val weatherIcon: Int get() = getWeatherIconBasedOnId(weatherId)
 }
 
 data class WeatherCondition(
