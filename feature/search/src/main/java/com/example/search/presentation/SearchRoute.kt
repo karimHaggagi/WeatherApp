@@ -43,8 +43,6 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.core.R
 import com.example.core.presentation.ScreenContainer
 import com.example.core.presentation.common.WeatherUi
-import com.example.core.presentation.component.ForecastMoreDetails
-import com.example.core.presentation.component.Subtitle
 import com.example.search.presentation.component.DialogResult
 import com.example.search.presentation.component.SavedItem
 
@@ -65,7 +63,7 @@ fun SearchRoute(modifier: Modifier = Modifier, viewModel: SearchViewModel = hilt
                 onCityNameChange = viewModel::onCityNameChange,
                 onSearchClicked = viewModel::onSearchIconClick,
                 onSavedLocationClick = viewModel::onSavedLocationClick,
-                onDismiss = {viewModel::onDismiss}
+                onDismiss = viewModel::onDismiss
             )
         })
 }
