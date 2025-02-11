@@ -96,6 +96,8 @@ dependencies {
     // See Add the KSP plugin to your project
     ksp(libs.androidx.room.compiler)
 
+    // my library to display weather icons
+    implementation (libs.formatweather)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

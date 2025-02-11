@@ -2,7 +2,7 @@ package com.example.home.domain.model
 
 import androidx.annotation.DrawableRes
 import com.example.core.presentation.common.formatTime
-import com.example.core.presentation.iconIdForWeatherCondition
+import com.example.core.presentation.getWeatherIconBasedOnId
 import com.example.core.data.remote.dto.Clouds
 import com.example.core.data.remote.dto.ForecastSys
 import com.example.core.domain.model.Main
@@ -39,7 +39,7 @@ data class HourlyForecast(
 ) {
 
     @get:DrawableRes
-    val weatherIcon: Int get() = iconIdForWeatherCondition(weatherId)
+    val weatherIcon: Int get() = getWeatherIconBasedOnId(weatherId)
 }
 
 
