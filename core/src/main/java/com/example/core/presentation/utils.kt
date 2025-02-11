@@ -76,3 +76,5 @@ fun getCurrentDayFormatted(): String {
     // Format the current date
     return currentDate.format(formatter)
 }
+
+fun getWeatherIconForPreview() = com.example.weather.R.drawable.ic_wind

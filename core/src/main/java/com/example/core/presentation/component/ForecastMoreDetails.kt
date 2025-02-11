@@ -28,10 +28,10 @@ fun ForecastMoreDetails(modifier: Modifier = Modifier, condition: WeatherConditi
             .fillMaxWidth()
     ) {
         Column(modifier = modifier.padding(horizontal = 2.dp, vertical = 2.dp)) {
-            ConditionsLabelSection(modifier, R.drawable.ic_wind, R.string.wind_label)
-            ConditionsLabelSection(modifier, R.drawable.ic_humidity, R.string.humidity_label)
-            ConditionsLabelSection(modifier, R.drawable.ic_visibility, R.string.visibility_label)
-            ConditionsLabelSection(modifier, R.drawable.ic_pressure, R.string.pressure_label)
+            ConditionsLabelSection(modifier, com.example.weather.R.drawable.ic_wind, R.string.wind_label)
+            ConditionsLabelSection(modifier, com.example.weather.R.drawable.ic_humidity, R.string.humidity_label)
+            ConditionsLabelSection(modifier, com.example.weather.R.drawable.ic_visibility, R.string.visibility_label)
+            ConditionsLabelSection(modifier,com.example.weather.R.drawable.ic_pressure, R.string.pressure_label)
         }
         Column(modifier = modifier.padding(horizontal = 4.dp, vertical = 4.dp)) {
             Text(
