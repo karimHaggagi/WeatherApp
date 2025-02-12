@@ -1,12 +1,12 @@
 package com.example.home.presentation
 
-import com.example.core.presentation.UiText
-import com.example.core.presentation.common.formatDate
-import com.example.home.domain.model.ForecastModelItem
-import com.example.home.domain.model.HourlyForecast
-import com.example.core.domain.model.WeatherModel
-import com.example.core.presentation.common.WeatherCondition
-import com.example.core.presentation.common.WeatherUi
+import com.example.ui.UiText
+import com.example.model.domainmodel.ForecastModelItem
+import com.example.model.domainmodel.HourlyForecast
+import com.example.model.domainmodel.WeatherModel
+import com.example.model.WeatherCondition
+import com.example.model.WeatherUi
+import com.example.model.formatDate
 
 /**
  * created by Karim Haggagi Hassan Elsayed on 2/4/25

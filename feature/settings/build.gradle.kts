@@ -47,10 +47,17 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
+    implementation(projects.core.ui)
 
     //hilt
     implementation (libs.hilt.android)
+    implementation(libs.junit.ktx)
+    implementation(libs.androidx.hilt.navigation.compose )
     ksp(libs.hilt.compiler)
 
-    implementation(projects.core)
+    implementation(projects.core.utils)
+    androidTestImplementation(libs.androidx.junit)
+    androidTestImplementation(libs.androidx.espresso.core)
+
+    implementation(projects.core.data)
 }

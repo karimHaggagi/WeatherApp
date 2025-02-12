@@ -3,9 +3,7 @@ package com.example.weatherapp
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.core.data.local.LocationData
-import com.example.core.data.local.LocationDataSource
-import com.example.core.data.local.settings.SettingsDataSource
+import com.example.data.settings.SettingsRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.stateIn
@@ -17,14 +15,13 @@ import javax.inject.Inject
  **/
 @HiltViewModel
 class MainViewModel @Inject constructor(
-    private val locationDataStore: LocationDataSource,
-    settingsDataSource: SettingsDataSource
+    private val settingsRepository: SettingsRepository,
 ) :
     ViewModel() {
 
     val state = mutableStateOf(MainContract.MainUiState())
     val darkThemeFlow =
-        settingsDataSource.getTheme().stateIn(
+        settingsRepository.getTheme().stateIn(
             viewModelScope,
             SharingStarted.WhileSubscribed(500), false
         )
@@ -41,7 +38,11 @@ class MainViewModel @Inject constructor(
 
             is MainContract.MainEvent.SaveLocation -> {
                 state.value =
-                    state.value.copy(userLocation = LocationData(event.latitude, event.longitude))
+                    state.value.copy(userLocation = com.example.model.domainmodel.LocationData(
+                        event.latitude,
+                        event.longitude
+                    )
+                    )
                 saveLocation(event.latitude, event.longitude)
             }
         }
@@ -49,7 +50,7 @@ class MainViewModel @Inject constructor(
 
     private fun saveLocation(latitude: Double, longitude: Double) {
         viewModelScope.launch {
-            locationDataStore.saveLocation(latitude, longitude)
+            settingsRepository.saveLocation(latitude, longitude)
         }
     }
 }

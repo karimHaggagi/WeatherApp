@@ -1,6 +1,6 @@
 import java.net.URI
 
-include(":feature:settings")
+include(":domain:usecase")
 
 
 pluginManagement {
@@ -29,6 +29,15 @@ enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
 rootProject.name = "WeatherApp"
 include(":app")
-include(":core")
 include(":feature:home")
 include(":feature:search")
+include(":core:utils")
+include(":core:ui")
+include(":core:data-store")
+include(":core:data-base")
+include(":core:model")
+include(":core:data")
+include(":core:common")
+include(":core:network")
+include(":feature:settings")
+

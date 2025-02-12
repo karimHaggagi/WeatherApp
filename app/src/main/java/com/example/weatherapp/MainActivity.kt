@@ -32,12 +32,9 @@ import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navOptions
-import com.example.core.presentation.Screens
-import com.example.core.presentation.common.CheckForPermissions
-import com.example.core.presentation.common.OnPermissionDenied
-import com.example.core.presentation.component.WeatherBottomNavigation
-import com.example.core.presentation.createLocationRequest
-import com.example.core.presentation.theme.WeatherAppTheme
+import com.example.ui.CheckForPermissions
+import com.example.ui.OnPermissionDenied
+import com.example.utils.createLocationRequest
 import com.example.weatherapp.component.InfoScreens
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationCallback
@@ -95,7 +92,7 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             val isDarkTheme by mainViewModel.darkThemeFlow.collectAsStateWithLifecycle()
-            WeatherAppTheme(darkTheme = isDarkTheme) {
+            com.example.ui.theme.WeatherAppTheme(darkTheme = isDarkTheme) {
                 val navController = rememberNavController()
 
                 val scope = rememberCoroutineScope()
@@ -110,7 +107,7 @@ class MainActivity : ComponentActivity() {
                         SnackbarHost(hostState = snackbarHostState)
                     },
                     bottomBar = {
-                        WeatherBottomNavigation(onIconClick = {
+                        com.example.ui.WeatherBottomNavigation(onIconClick = {
                             navigateToTopLevelDestination(navController, it)
                         })
                     }
@@ -203,7 +200,7 @@ class MainActivity : ComponentActivity() {
 
     private fun navigateToTopLevelDestination(
         navController: NavHostController,
-        topLevelDestination: Screens
+        topLevelDestination: com.example.model.Screens
     ) {
 //    trace("Navigation: ${topLevelDestination.name}") {
         val topLevelNavOptions = navOptions {
@@ -221,21 +218,21 @@ class MainActivity : ComponentActivity() {
         }
 
         when (topLevelDestination) {
-            Screens.Home -> navController.navigate(
-                Screens.Home,
+            com.example.model.Screens.Home -> navController.navigate(
+                com.example.model.Screens.Home,
                 topLevelNavOptions
             )
 
-            Screens.Search -> {
+            com.example.model.Screens.Search -> {
                 navController.navigate(
-                    Screens.Search,
+                    com.example.model.Screens.Search,
                     topLevelNavOptions
                 )
             }
 
-            Screens.Settings -> {
+            com.example.model.Screens.Settings -> {
                 navController.navigate(
-                    Screens.Settings,
+                    com.example.model.Screens.Settings,
                     topLevelNavOptions
                 )
             }

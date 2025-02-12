@@ -22,13 +22,8 @@ import androidx.compose.ui.graphics.Shadow
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.core.presentation.component.Subtitle
-import com.example.core.presentation.component.SubtitleSmall
-import com.example.core.R
-import com.example.core.presentation.component.ForecastMoreDetails
-import com.example.core.presentation.preview.PreviewLightDarkMode
+import com.example.ui.R
 import com.example.search.presentation.SavedLocations
 
 /**
@@ -74,7 +69,7 @@ fun SavedItem(modifier: Modifier = Modifier, savedLocations: SavedLocations) {
                             )
                         )
                     )
-                    SubtitleSmall(
+                    com.example.ui.SubtitleSmall(
                         text = stringResource(
                             R.string.format_high_low_temperature,
                             savedLocations.weatherUi.maxTemp,
@@ -95,7 +90,7 @@ fun SavedItem(modifier: Modifier = Modifier, savedLocations: SavedLocations) {
                         contentScale = ContentScale.Crop,
                         modifier = Modifier.size(48.dp)
                     )
-                    Subtitle(
+                    com.example.ui.Subtitle(
                         text = savedLocations.weatherUi.weather,
                         color = MaterialTheme.colorScheme.onPrimaryContainer
                     )
@@ -107,20 +102,20 @@ fun SavedItem(modifier: Modifier = Modifier, savedLocations: SavedLocations) {
                     horizontalAlignment = Alignment.Start,
                     modifier = modifier.padding(horizontal = 0.dp, vertical = 0.dp)
                 ) {
-                    Subtitle(
+                    com.example.ui.Subtitle(
                         text = savedLocations.weatherUi.locationName,
                         color = MaterialTheme.colorScheme.onSecondaryContainer
                     )
                 }
                 Spacer(modifier = Modifier.weight(1f))
 
-                ForecastMoreDetails(condition = savedLocations.weatherCondition)
+                com.example.ui.ForecastMoreDetails(condition = savedLocations.weatherCondition)
             }
         }
     }
 }
 
-@PreviewLightDarkMode
+@com.example.ui.preview.PreviewLightDarkMode
 @Composable
 private fun SavedIemPreview() {
     SavedItem(savedLocations = SavedLocations())

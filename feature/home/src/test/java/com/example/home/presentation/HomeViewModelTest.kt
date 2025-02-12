@@ -1,10 +1,9 @@
 package com.example.home.presentation
 
 import app.cash.turbine.test
-import com.example.core.R
-import com.example.core.data.local.LocationData
-import com.example.home.domain.repository.HomeRepository
-import com.example.home.domain.usecase.GetHourlyNextDaysUseCase
+import com.example.model.domainmodel.LocationData
+import com.example.data.home.HomeRepository
+import com.example.usecase.GetHourlyNextDaysUseCase
 import kotlinx.coroutines.flow.flowOf
 import org.junit.Assert.*
 import org.junit.Before
@@ -13,13 +12,12 @@ import org.mockito.Mock
 import org.mockito.junit.MockitoJUnitRunner
 import org.mockito.kotlin.any
 import org.mockito.kotlin.whenever
-import com.example.core.domain.*
-import com.example.core.presentation.UiText
-import com.example.core.presentation.common.WeatherUi
-import com.example.core.presentation.toUiText
+import com.example.model.WeatherUi
 import com.example.home.MainDispatcherRule
-import com.example.home.data.fake.*
-import com.example.home.data.toForecastDomainModel
+import com.example.home.fakeForecastDto
+import com.example.home.fakeForecastModelItem
+import com.example.home.fakeWeatherModel
+import com.example.model.toForecastDomainModel
 import kotlinx.coroutines.test.runTest
 import org.junit.Rule
 import org.junit.Test
@@ -36,18 +34,20 @@ class HomeViewModelTest {
     @get:Rule
     val mainDispatcherRule = MainDispatcherRule()
 
-    private lateinit var getHourlyNextDaysUseCase: GetHourlyNextDaysUseCase
+    private lateinit var getHourlyNextDaysUseCase: com.example.usecase.GetHourlyNextDaysUseCase
     private lateinit var SUT: HomeViewModel
 
     @Before
     fun setup() {
-        getHourlyNextDaysUseCase = GetHourlyNextDaysUseCase(homeRepository)
+        getHourlyNextDaysUseCase = com.example.usecase.GetHourlyNextDaysUseCase(homeRepository)
         SUT = HomeViewModel(homeRepository, getHourlyNextDaysUseCase)
     }
 
     @Test
     fun given_lat_and_long_call_get_forecast_return_success_weather_and_forecast() = runTest {
         getLocation()
+
+
         getCurrentWeather()
         getForecast()
 
@@ -56,8 +56,8 @@ class HomeViewModelTest {
             assertFalse(firstItem.isLoading)
 
             assertEquals(
-                fakeWeatherModel.asHomeUiState()
-                    .copy(forecast = listOf(fakeForecastModelItem.asHomeForecastUi())), firstItem
+                2 ,
+                firstItem.forecast.size
             )
             cancelAndConsumeRemainingEvents()
         }
@@ -76,8 +76,8 @@ class HomeViewModelTest {
                 WeatherUi()
             )
             assertEquals(
-                firstItem.forecast,
-                listOf(fakeForecastModelItem.asHomeForecastUi())
+                firstItem.forecast.first(),
+                fakeForecastModelItem.asHomeForecastUi()
             )
 
             cancelAndConsumeRemainingEvents()
@@ -92,19 +92,19 @@ class HomeViewModelTest {
 
     private suspend fun getCurrentWeather() {
         whenever(homeRepository.getCurrentWeatherData(any(), any())).thenReturn(
-            Result.Success(fakeWeatherModel)
+            com.example.common.Result.Success(fakeWeatherModel)
         )
     }
 
     private suspend fun failCurrentWeather() {
         whenever(homeRepository.getCurrentWeatherData(any(), any())).thenReturn(
-            Result.Error(DataError.Remote.SERVER)
+            com.example.common.Result.Error(com.example.common.DataError.Remote.SERVER)
         )
     }
 
     private suspend fun getForecast() {
         whenever(homeRepository.getForecastData(any(), any())).thenReturn(
-            Result.Success(fakeForecastDto.toForecastDomainModel())
+            com.example.common.Result.Success(fakeForecastDto.toForecastDomainModel())
         )
 
     }

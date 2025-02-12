@@ -1,7 +1,7 @@
 package com.example.search.presentation
 
 import app.cash.turbine.test
-import com.example.search.domain.repo.SearchRepo
+import com.example.data.search.SearchRepo
 import org.junit.Assert.*
 import org.junit.Before
 import org.junit.runner.RunWith
@@ -9,9 +9,8 @@ import org.mockito.Mock
 import org.mockito.junit.MockitoJUnitRunner
 import org.mockito.kotlin.any
 import org.mockito.kotlin.whenever
-import com.example.core.domain.*
 import com.example.search.MainDispatcherRule
-import com.example.search.fake.fakeWeatherModel
+import com.example.search.data.repoImpl.fake.fakeWeatherModel
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.test.runTest
 import org.junit.Rule
@@ -65,7 +64,7 @@ class SearchViewModelTest {
 
     private suspend fun getWeatherCity() {
         whenever(searchRepo.getWeatherByCityName(any())).thenReturn(
-            Result.Success(
+            com.example.common.Result.Success(
                 fakeWeatherModel
             )
         )

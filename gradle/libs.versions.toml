@@ -34,6 +34,8 @@ mockitoCore = "5.12.0"
 mockitoInline = "2.13.0"
 mockitoKotlin = "5.4.0"
 junitKtxVersion = "1.2.1"
+activityKtx = "1.10.0"
+annotationJvm = "1.9.1"
 
 
 [libraries]
@@ -86,6 +88,8 @@ mockito-inline = { module = "org.mockito:mockito-inline", version.ref = "mockito
 mockito-kotlin = { module = "org.mockito.kotlin:mockito-kotlin", version.ref = "mockitoKotlin" }
 androidx-room-testing = { module = "androidx.room:room-testing", version.ref = "roomRuntime" }
 junit-ktx = { group = "androidx.test.ext", name = "junit-ktx", version.ref = "junitKtxVersion" }
+androidx-activity-ktx = { group = "androidx.activity", name = "activity-ktx", version.ref = "activityKtx" }
+androidx-annotation-jvm = { group = "androidx.annotation", name = "annotation-jvm", version.ref = "annotationJvm" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

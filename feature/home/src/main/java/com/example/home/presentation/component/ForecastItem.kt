@@ -1,6 +1,5 @@
 package com.example.home.presentation.component
 
-import androidx.annotation.DrawableRes
 import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
@@ -29,12 +28,9 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.toggleableState
 import androidx.compose.ui.state.ToggleableState
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.core.R
-import com.example.core.presentation.common.WeatherUi
-import com.example.core.presentation.getWeatherIconForPreview
-import com.example.core.presentation.preview.PreviewLightDarkMode
+import com.example.ui.R
+import com.example.model.WeatherUi
 import com.example.home.presentation.ForecastUi
 
 /**
@@ -129,7 +125,7 @@ fun ForecastItem(
     }
 }
 
-@PreviewLightDarkMode
+@com.example.ui.preview.PreviewLightDarkMode
 @Composable
 private fun ForecastItemPreview() {
 
@@ -140,7 +136,7 @@ private fun ForecastItemPreview() {
                 date = "forecastDate",
                 maxTemp = 90.0,
                 minTemp = 40.0,
-                weatherId = getWeatherIconForPreview()
+                weatherId = com.example.weather.R.drawable.ic_wind
             )
         )
     )

@@ -27,12 +27,8 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import com.example.core.presentation.common.WeatherUi
-import com.example.core.presentation.component.Subtitle
-import com.example.core.presentation.component.SubtitleSmall
-import com.example.core.R
-import com.example.core.presentation.preview.PreviewLightDarkMode
-import com.example.core.presentation.theme.WeatherAppTheme
+import com.example.ui.R
+import com.example.model.WeatherUi
 
 /**
  * created by Karim Haggagi Hassan Elsayed on 2/3/25
@@ -67,7 +63,7 @@ fun CurrentWeatherWidget(modifier: Modifier = Modifier, state: WeatherUi) {
                     modifier = Modifier.size(16.dp),
                     colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.onPrimaryContainer)
                 )
-                Subtitle(
+                com.example.ui.Subtitle(
                     text = state.locationName
                 )
             }
@@ -104,7 +100,7 @@ fun CurrentWeatherWidget(modifier: Modifier = Modifier, state: WeatherUi) {
 
                     )
                     Spacer(modifier = Modifier.weight(1f))
-                    SubtitleSmall(
+                    com.example.ui.SubtitleSmall(
                         text = highLow,
                         modifier = modifier.padding(bottom = 8.dp)
                     )
@@ -124,7 +120,7 @@ fun CurrentWeatherWidget(modifier: Modifier = Modifier, state: WeatherUi) {
                         modifier = Modifier.size(48.dp)
                     )
                     Spacer(modifier = Modifier.weight(1f))
-                    Subtitle(
+                    com.example.ui.Subtitle(
                         text = state.weather,
                         modifier = modifier
                             .padding(bottom = 8.dp)
@@ -136,10 +132,10 @@ fun CurrentWeatherWidget(modifier: Modifier = Modifier, state: WeatherUi) {
     }
 }
 
-@PreviewLightDarkMode
+@com.example.ui.preview.PreviewLightDarkMode
 @Composable
 private fun CurrentWeatherWidgetPreview() {
-    WeatherAppTheme {
+    com.example.ui.theme.WeatherAppTheme {
         CurrentWeatherWidget(state = WeatherUi())
     }
 }

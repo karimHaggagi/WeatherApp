@@ -23,10 +23,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
-import com.example.core.R
-import com.example.core.domain.model.WeatherModel
-import com.example.core.presentation.component.ForecastMoreDetails
-import com.example.core.presentation.component.Subtitle
+import com.example.ui.R
 import com.example.search.presentation.SearchUiState
 
 /**
@@ -50,7 +47,7 @@ fun DialogResult(modifier: Modifier = Modifier, state: SearchUiState,onSavedLoca
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally,
             ) {
-                Subtitle(
+                com.example.ui.Subtitle(
                     text = state.cityName
                 )
                 Row(
@@ -103,7 +100,7 @@ fun DialogResult(modifier: Modifier = Modifier, state: SearchUiState,onSavedLoca
                         .padding(horizontal = 2.dp, vertical = 2.dp)
                         .fillMaxWidth()
                 ) {
-                    ForecastMoreDetails(condition = state.weatherCondition)
+                    com.example.ui.ForecastMoreDetails(condition = state.weatherCondition)
                 }
                 Row(
                     modifier = Modifier

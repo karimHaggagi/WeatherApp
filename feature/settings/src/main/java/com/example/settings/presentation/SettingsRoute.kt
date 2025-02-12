@@ -16,7 +16,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.example.core.presentation.preview.PreviewLightDarkMode
+import com.example.ui.preview.PreviewLightDarkMode
 
 /**
  * created by Karim Haggagi Hassan Elsayed on 2/11/25

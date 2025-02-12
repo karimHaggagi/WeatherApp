@@ -1,19 +1,23 @@
-package com.example.search.fake
+package com.example.search.data.repoImpl.fake
 
-import com.example.core.data.remote.dto.*
-import com.example.core.domain.model.WeatherModel
+import com.example.model.domainmodel.Coord
+import com.example.model.domainmodel.Main
+import com.example.model.domainmodel.Weather
+import com.example.model.domainmodel.WeatherModel
+import com.example.model.domainmodel.Wind
+import com.example.model.dto.WeatherDto
 
 /**
  * created by Karim Haggagi Hassan Elsayed on 2/10/25
  **/
 val fakeWeatherDto = WeatherDto(
     base = "stations",
-    clouds = Clouds(all = 20),
+    clouds = com.example.model.dto.Clouds(all = 20),
     cod = 200,
-    coord = Coord(lat = 37.7749, lon = -122.4194),
+    coord = com.example.model.dto.Coord(lat = 37.7749, lon = -122.4194),
     dt = 1638316800,
     id = 5391959,
-    main = Main(
+    main = com.example.model.dto.Main(
         feels_like = 15.0,
         grnd_level = 1012,
         humidity = 75,
@@ -24,7 +28,7 @@ val fakeWeatherDto = WeatherDto(
         temp_min = 16.0
     ),
     name = "San Francisco",
-    sys = Sys(
+    sys = com.example.model.dto.Sys(
         country = "US",
         id = 5122,
         sunrise = 1638266400,
@@ -34,14 +38,14 @@ val fakeWeatherDto = WeatherDto(
     timezone = -28800,
     visibility = 10000,
     weather = listOf(
-        Weather(
+        com.example.model.dto.Weather(
             description = "clear sky",
             icon = "01d",
             id = 800,
             main = "Clear"
         )
     ),
-    wind = Wind(
+    wind = com.example.model.dto.Wind(
         deg = 350,
         gust = 5.0,
         speed = 3.6
@@ -51,9 +55,9 @@ val fakeWeatherDto = WeatherDto(
 val fakeWeatherModel = WeatherModel(
     base = "stations",
     cod = 200,
-    coord = com.example.core.domain.model.Coord(lat = 37.7749, lon = -122.4194),
+    coord = Coord(lat = 37.7749, lon = -122.4194),
     id = 5391959,
-    main = com.example.core.domain.model.Main(
+    main = Main(
         feelsLike = 15.0,
         grndLevel = 1012,
         humidity = 75,
@@ -67,28 +71,28 @@ val fakeWeatherModel = WeatherModel(
     timezone = -28800,
     visibility = 10000,
     weather = listOf(
-       com.example.core.domain.model. Weather(
+       Weather(
             description = "clear sky",
             icon = "01d",
             id = 800,
             main = "Clear"
         )
     ),
-    wind = com.example.core.domain.model.Wind(
+    wind = Wind(
         deg = 350,
         gust = 5.0,
         speed = 3.6
     )
 )
 
-val fakeForecastDto = ForecastDto(
+val fakeForecastDto = com.example.model.dto.ForecastDto(
     cod = 200,
     message = 0,
     cnt = 5,
     list = listOf(
-        ForecastItem(
+        com.example.model.dto.ForecastItem(
             dt = 1638316800,
-            main = Main(
+            main = com.example.model.dto.Main(
                 feels_like = 15.0,
                 grnd_level = 1012,
                 humidity = 75,
@@ -100,26 +104,26 @@ val fakeForecastDto = ForecastDto(
             ),
             visibility = 10000,
             weather = listOf(
-                Weather(
+                com.example.model.dto.Weather(
                     description = "clear sky",
                     icon = "01d",
                     id = 800,
                     main = "Clear"
                 )
             ),
-            wind = Wind(
+            wind = com.example.model.dto.Wind(
                 deg = 350,
                 gust = 5.0,
                 speed = 3.6
             ),
-            clouds = Clouds(all = 20),
+            clouds = com.example.model.dto.Clouds(all = 20),
             pop = 0.0,
-            sys = ForecastSys(pod = "d"),
+            sys = com.example.model.dto.ForecastSys(pod = "d"),
             dt_txt = "2025-02-10 12:00:00"
         ),
-        ForecastItem(
+        com.example.model.dto.ForecastItem(
             dt = 1638327600,
-            main = Main(
+            main = com.example.model.dto.Main(
                 feels_like = 14.0,
                 grnd_level = 1013,
                 humidity = 80,
@@ -131,21 +135,21 @@ val fakeForecastDto = ForecastDto(
             ),
             visibility = 8000,
             weather = listOf(
-                Weather(
+                com.example.model.dto.Weather(
                     description = "few clouds",
                     icon = "02d",
                     id = 801,
                     main = "Clouds"
                 )
             ),
-            wind = Wind(
+            wind = com.example.model.dto.Wind(
                 deg = 340,
                 gust = 4.5,
                 speed = 3.2
             ),
-            clouds = Clouds(all = 40),
+            clouds = com.example.model.dto.Clouds(all = 40),
             pop = 0.1,
-            sys = ForecastSys(pod = "d"),
+            sys = com.example.model.dto.ForecastSys(pod = "d"),
             dt_txt = "2025-02-11 15:00:00"
         )
     )

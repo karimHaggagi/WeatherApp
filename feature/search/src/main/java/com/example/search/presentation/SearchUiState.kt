@@ -1,9 +1,9 @@
 package com.example.search.presentation
 
-import com.example.core.domain.model.WeatherModel
-import com.example.core.presentation.UiText
-import com.example.core.presentation.common.WeatherCondition
-import com.example.core.presentation.common.WeatherUi
+import com.example.model.domainmodel.WeatherModel
+import com.example.ui.UiText
+import com.example.model.WeatherCondition
+import com.example.model.WeatherUi
 
 /**
  * created by Karim Haggagi Hassan Elsayed on 2/10/25

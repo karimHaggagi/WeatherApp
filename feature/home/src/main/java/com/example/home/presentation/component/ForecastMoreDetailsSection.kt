@@ -6,10 +6,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.core.presentation.component.ForecastMoreDetails
-import com.example.core.presentation.preview.PreviewLightDarkMode
 import com.example.home.presentation.ForecastUi
 
 /**
@@ -23,12 +20,12 @@ fun ForecastMoreDetailsSection(modifier: Modifier = Modifier, forecastUi: Foreca
             .padding(horizontal = 1.dp, vertical = 4.dp)
             .fillMaxWidth()
     ) {
-        ForecastMoreDetails(condition = forecastUi.weatherCondition)
+        com.example.ui.ForecastMoreDetails(condition = forecastUi.weatherCondition)
         HourlyDataElementRow(hourlyForecast = forecastUi.hourlyForecast)
     }
 }
 
-@PreviewLightDarkMode
+@com.example.ui.preview.PreviewLightDarkMode
 @Composable
 private fun ForecastMoreDetailsSectionPreview() {
     ForecastMoreDetailsSection(forecastUi = ForecastUi())

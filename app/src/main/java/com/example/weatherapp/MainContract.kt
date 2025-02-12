@@ -1,6 +1,6 @@
 package com.example.weatherapp
 
-import com.example.core.data.local.LocationData
+import com.example.model.domainmodel.LocationData
 
 /**
  * created by Karim Haggagi Hassan Elsayed on 2/7/25
@@ -10,7 +10,7 @@ class MainContract {
     data class MainUiState(
         val isPermissionGranted: Boolean = false,
         val isLocationSettingEnabled: Boolean = false,
-        val userLocation: LocationData? = null
+        val userLocation: com.example.model.domainmodel.LocationData? = null
     )
 
     sealed class MainEvent {

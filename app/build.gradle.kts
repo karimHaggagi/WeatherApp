@@ -64,7 +64,6 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 
-    implementation(projects.core)
     implementation(projects.feature.home)
     implementation(projects.feature.search)
     implementation(projects.feature.settings)
@@ -72,4 +71,11 @@ dependencies {
     //hilt
     implementation(libs.hilt.android)
     ksp(libs.hilt.compiler)
+
+    implementation(projects.core.data)
+    implementation(projects.core.common)
+    implementation(projects.core.model)
+    implementation(projects.core.ui)
+    implementation(projects.core.utils)
+
 }

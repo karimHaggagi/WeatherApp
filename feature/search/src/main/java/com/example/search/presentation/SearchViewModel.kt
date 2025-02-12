@@ -2,11 +2,11 @@ package com.example.search.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.core.domain.model.WeatherModel
-import com.example.core.domain.onError
-import com.example.core.domain.onSuccess
-import com.example.core.presentation.toUiText
-import com.example.search.domain.repo.SearchRepo
+import com.example.model.domainmodel.WeatherModel
+import com.example.common.onError
+import com.example.common.onSuccess
+import com.example.utils.toUiText
+import com.example.data.search.SearchRepo
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.FlowPreview
@@ -14,7 +14,6 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.debounce
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.flowOn

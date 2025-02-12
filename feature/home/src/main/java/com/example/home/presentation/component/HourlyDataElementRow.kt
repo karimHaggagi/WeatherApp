@@ -19,12 +19,11 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.core.R
-import com.example.home.domain.model.HourlyForecast
-import com.example.core.domain.model.Main
-import com.example.core.presentation.preview.PreviewLightDarkMode
+import com.example.ui.R
+import com.example.model.domainmodel.HourlyForecast
+import com.example.model.domainmodel.Main
+import com.example.ui.preview.PreviewLightDarkMode
 
 /**
  * created by Karim Haggagi Hassan Elsayed on 2/3/25

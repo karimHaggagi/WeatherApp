@@ -10,17 +10,16 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.example.core.presentation.ScreenContainer
-import com.example.core.presentation.component.Subtitle
+import com.example.ui.ScreenContainer
+import com.example.ui.Subtitle
 import com.example.home.R
 import com.example.home.presentation.component.CurrentWeatherWidget
 import com.example.home.presentation.component.ForecastItem
-import com.example.core.presentation.component.OtherConditionsSection
-import com.example.core.presentation.preview.PreviewLightDarkMode
+import com.example.ui.OtherConditionsSection
+import com.example.ui.preview.PreviewLightDarkMode
 
 /**
  * created by Karim Haggagi Hassan Elsayed on 2/3/25

@@ -2,12 +2,11 @@ package com.example.home.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.core.data.local.LocationData
-import com.example.core.domain.onError
-import com.example.core.domain.onSuccess
-import com.example.core.presentation.toUiText
-import com.example.home.domain.repository.HomeRepository
-import com.example.home.domain.usecase.GetHourlyNextDaysUseCase
+import com.example.common.onError
+import com.example.common.onSuccess
+import com.example.data.home.HomeRepository
+import com.example.usecase.GetHourlyNextDaysUseCase
+import com.example.utils.toUiText
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.async
