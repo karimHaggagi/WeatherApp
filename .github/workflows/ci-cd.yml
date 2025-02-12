@@ -39,10 +39,12 @@ jobs:
 
       # Run unit tests
       - name: Run Unit Tests
+        needs: [ lint ]
         run: ./gradlew testDebugUnitTest
 
       # Build the APK
       - name: Build APK
+        needs: [ Run Unit Tests ]
         run: ./gradlew assembleDebug
 
       # Optional: Upload the APK as an artifact
