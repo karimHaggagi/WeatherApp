@@ -53,6 +53,12 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
+      # Create local.properties file dynamically
+      - name: Create local.properties file
+        run: |
+          echo "API_KEY=${{ secrets.API_KEY }}" > local.properties
+          echo "sdk.dir=$ANDROID_HOME" >> local.properties
+
       # Run unit tests
       - name: Run Unit Tests
         run: ./gradlew testDebugUnitTest
