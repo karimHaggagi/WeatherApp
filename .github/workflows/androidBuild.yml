@@ -16,7 +16,7 @@ on:
           - deploy
   push:
     branches:
-      - '*'
+      - master
 
 jobs:
   build:
