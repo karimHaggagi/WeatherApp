@@ -5,16 +5,16 @@ import androidx.lifecycle.viewModelScope
 import com.example.common.onError
 import com.example.common.onSuccess
 import com.example.data.home.HomeRepository
+import com.example.model.domainmodel.LocationData
 import com.example.usecase.GetHourlyNextDaysUseCase
 import com.example.utils.toUiText
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.async
+import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.flow.onStart
-import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -28,67 +28,63 @@ class HomeViewModel @Inject constructor(
     private val getHourlyNextDaysUseCase: GetHourlyNextDaysUseCase
 ) : ViewModel() {
 
-    private val _currentWeatherStateFlow = MutableStateFlow(HomeUiState())
-    val currentWeatherStateFlow = _currentWeatherStateFlow
-        .onStart {
-            getCurrentWeather()
-        }
-        .stateIn(
-            viewModelScope,
-            SharingStarted.WhileSubscribed(5000),
-            HomeUiState()
-        )
+    private val _weatherStateFlow = MutableStateFlow<WeatherUiState>(WeatherUiState.Loading)
+    val currentWeatherStateFlow = _weatherStateFlow.asStateFlow()
+
+    private val _forecastStateFlow = MutableStateFlow<ForecastUiState>(ForecastUiState.Loading)
+    val forecastStateFlow = _forecastStateFlow.asStateFlow()
 
     private var locationJob: Job? = null
+    private var lastLocation: LocationData? = null
 
-    private fun getCurrentWeather() {
+    init {
+        getLastLocation()
+    }
+
+    private fun getLastLocation() {
         viewModelScope.launch {
             repo.getLocation().collectLatest { locationData ->
-                locationJob?.cancel()
-
-                locationJob = viewModelScope.launch {
-                    val currentWeatherDeferred = async {
-                        repo.getCurrentWeatherData(
-                            locationData.latitude,
-                            locationData.longitude
-                        )
-                    }
-                    val hourlyForecastDeferred = async {
-                        getHourlyNextDaysUseCase(locationData.latitude, locationData.longitude)
-                    }
-
-                    val currentWeatherResult = currentWeatherDeferred.await()
-                    val hourlyForecastResult = hourlyForecastDeferred.await()
-
-                    currentWeatherResult.onSuccess { model ->
-                        _currentWeatherStateFlow.update { model.asHomeUiState() }
-                    }.onError { error ->
-                        _currentWeatherStateFlow.update {
-                            it.copy(
-                                isLoading = false,
-                                hasError = error.toUiText()
-                            )
-                        }
-                    }
-
-                    hourlyForecastResult.onSuccess { model ->
-                        _currentWeatherStateFlow.update { it.copy(forecast = model.map { it.asHomeForecastUi() }) }
-                    }.onError { error ->
-                        _currentWeatherStateFlow.update {
-                            it.copy(
-                                isLoading = false,
-                                hasError = error.toUiText()
-                            )
-                        }
-                    }
-                }
+                lastLocation = locationData
+                getData()
             }
         }
     }
 
-    fun hideError() {
-        viewModelScope.launch {
-            _currentWeatherStateFlow.update { it.copy(hasError = null) }
+    private fun getData(){
+        lastLocation?.let {
+            locationJob?.cancel()
+            locationJob = viewModelScope.launch {
+                getCurrentWeather(it)
+                getNextDaysForecast(it)
+            }
         }
+    }
+
+    private suspend fun getCurrentWeather(locationData: LocationData) {
+        _weatherStateFlow.emit(WeatherUiState.Loading)
+        repo.getCurrentWeatherData(
+            locationData.latitude,
+            locationData.longitude
+        ).onSuccess { response ->
+            _weatherStateFlow.emit(response.asSuccessHomeState())
+        }.onError { error ->
+            _weatherStateFlow.emit(WeatherUiState.Error(error.toUiText()))
+        }
+    }
+
+    private suspend fun getNextDaysForecast(locationData: LocationData) {
+        _forecastStateFlow.emit(ForecastUiState.Loading)
+        getHourlyNextDaysUseCase(
+            locationData.latitude,
+            locationData.longitude
+        ).onSuccess { response ->
+            _forecastStateFlow.emit(ForecastUiState.Success(response.map { it.asHomeForecastUi() }))
+        }.onError { error ->
+            _forecastStateFlow.emit(ForecastUiState.Error(error.toUiText()))
+        }
+    }
+
+    fun onRefresh(){
+        getData()
     }
 }

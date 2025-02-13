@@ -11,13 +11,18 @@ import com.example.model.formatDate
 /**
  * created by Karim Haggagi Hassan Elsayed on 2/4/25
  **/
-data class HomeUiState(
-    val isLoading: Boolean = true,
-    val hasError: UiText? = null,
-    val weatherUi: WeatherUi = WeatherUi(),
-    val weatherCondition: WeatherCondition = WeatherCondition(),
-    val forecast: List<ForecastUi> = emptyList()
-)
+sealed interface WeatherUiState {
+    data object Loading : WeatherUiState
+    data class Error(val error: UiText) : WeatherUiState
+    data class Success(val weatherUi: WeatherUi, val weatherCondition: WeatherCondition) :
+        WeatherUiState
+}
+
+sealed interface ForecastUiState {
+    data object Loading : ForecastUiState
+    data class Error(val error: UiText) : ForecastUiState
+    data class Success(val forecast: List<ForecastUi>) : ForecastUiState
+}
 
 data class ForecastUi(
     val weather: WeatherUi = WeatherUi(),
@@ -25,7 +30,7 @@ data class ForecastUi(
     val hourlyForecast: List<HourlyForecast> = emptyList()
 )
 
-fun WeatherModel.asHomeUiState() = HomeUiState(
+fun WeatherModel.asSuccessHomeState() = WeatherUiState.Success(
     weatherUi = WeatherUi(
         locationName = name,
         currentTemp = main.temp,
@@ -39,9 +44,7 @@ fun WeatherModel.asHomeUiState() = HomeUiState(
         humidity = main.humidity,
         windSpeed = wind.speed,
         visibility = visibility
-    ),
-    isLoading = false,
-    hasError = null
+    )
 )
 
 fun ForecastModelItem.asHomeForecastUi(): ForecastUi {
