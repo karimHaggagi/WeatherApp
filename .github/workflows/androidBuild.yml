@@ -34,6 +34,9 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
+      # Build the APK
+      - name: Build APK
+        run: ./gradlew assembleDebug
 
       # Optional: Upload the APK as an artifact
       - name: Upload APK
