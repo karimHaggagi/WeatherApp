@@ -34,6 +34,11 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
+      # Create local.properties file
+      - name: Create local.properties file
+        run: |
+          echo "API_KEY=${{ secrets.API_KEY }}" >> local.properties  
+
       # Build the APK
       - name: Build APK
         run: ./gradlew assembleDebug
