@@ -16,7 +16,7 @@ on:
           - deploy
   push:
     branches:
-      - master
+      - '*'
 
 jobs:
   build:
@@ -26,6 +26,8 @@ jobs:
       # Checkout the code
       - name: Checkout
         uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.inputs.branch }}
 
       # Set up JDK
       - name: Set up JDK 17
