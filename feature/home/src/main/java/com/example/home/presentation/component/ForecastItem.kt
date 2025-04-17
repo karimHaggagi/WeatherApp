@@ -1,5 +1,6 @@
 package com.example.home.presentation.component
 
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
@@ -118,9 +119,8 @@ fun ForecastItem(
                 }
             )
         }
-        if (expanded) {
+        AnimatedVisibility(expanded) {
             ForecastMoreDetailsSection(forecastUi = forecast)
-
         }
     }
 }

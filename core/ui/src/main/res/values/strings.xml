@@ -15,7 +15,7 @@
     </string>
 
 
-    <string name="placeholder_search">Search...</string>
+    <string name="placeholder_search">Search Main</string>
 
     <!--    Permissions-->
     <string name="location_rationale_title">Permission Request</string>

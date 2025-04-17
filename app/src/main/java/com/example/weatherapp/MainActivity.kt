@@ -80,8 +80,8 @@ class MainActivity : ComponentActivity() {
     @SuppressLint("MissingPermission")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         enableEdgeToEdge()
+
         createLocationRequest(
             activity = this@MainActivity,
             locationRequestLauncher = locationRequestLauncher

@@ -23,6 +23,12 @@ android {
             )
         }
     }
+    flavorDimensions += listOf("version")
+    productFlavors {
+        create("dev") {}
+        create("stag") {}
+        create("prod") {}
+    }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11

@@ -29,6 +29,28 @@ android {
                 "proguard-rules.pro"
             )
         }
+        debug {
+            isDebuggable = true
+        }
+    }
+
+    flavorDimensions += listOf("version")
+    productFlavors {
+        create("dev") {
+            applicationIdSuffix = ".dev"
+            manifestPlaceholders["appName"] = "Weather Dev"
+        }
+        create("stag") {
+            applicationIdSuffix = ".stag"
+            manifestPlaceholders["appName"] = "Weather Stag"
+
+        }
+        create("prod") {
+            applicationIdSuffix = ".prod"
+            manifestPlaceholders["appName"] = "Weather Prod"
+
+        }
+
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11

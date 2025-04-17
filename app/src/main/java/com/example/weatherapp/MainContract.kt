@@ -10,7 +10,7 @@ class MainContract {
     data class MainUiState(
         val isPermissionGranted: Boolean = false,
         val isLocationSettingEnabled: Boolean = false,
-        val userLocation: com.example.model.domainmodel.LocationData? = null
+        val userLocation: LocationData? = null
     )
 
     sealed class MainEvent {
