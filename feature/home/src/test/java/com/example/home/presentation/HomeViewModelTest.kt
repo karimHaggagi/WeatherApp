@@ -1,5 +1,6 @@
 package com.example.home.presentation
 
+import android.util.Log
 import app.cash.turbine.test
 import com.example.core.R
 import com.example.core.data.local.LocationData
@@ -54,11 +55,9 @@ class HomeViewModelTest {
         SUT.currentWeatherStateFlow.test {
             val firstItem = awaitItem()
             assertFalse(firstItem.isLoading)
-
-            assertEquals(
-                fakeWeatherModel.asHomeUiState()
-                    .copy(forecast = listOf(fakeForecastModelItem.asHomeForecastUi())), firstItem
-            )
+            val result = fakeWeatherModel.asHomeUiState()
+                .copy(forecast = listOf(fakeForecastModelItem.asHomeForecastUi()))
+            assertEquals(result, firstItem)
             cancelAndConsumeRemainingEvents()
         }
     }
@@ -104,7 +103,8 @@ class HomeViewModelTest {
 
     private suspend fun getForecast() {
         whenever(homeRepository.getForecastData(any(), any())).thenReturn(
-            Result.Success(fakeForecastDto.toForecastDomainModel())
+
+            Result.Success(fakeForecastDto.copy(list = listOf(fakeForecastDto.list?.get(0))).toForecastDomainModel())
         )
 
     }
