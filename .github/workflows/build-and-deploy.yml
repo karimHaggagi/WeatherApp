@@ -61,15 +61,13 @@ jobs:
           echo '${{ secrets.FIREBASE_SERVICE_ACCOUNT_KEY }}' > ${{ github.workspace }}/serviceAccount.json
 
       - name: Distribute APK to Firebase
-        env:
-          GOOGLE_APPLICATION_CREDENTIALS: ${{ github.workspace }}/serviceAccount.json
-        run: |
-          firebase appdistribution:distribute \
-            app/build/outputs/apk/debug/app-debug.apk \
-            --app ${{ secrets.FIREBASE_APP_ID }} \
-            --release-notes "Automated build from GitHub Actions" \
-            --groups "internal-testers"
-
+        uses: wzieba/Firebase-Distribution-Github-Action@v1
+        with:
+          appId: ${{ secrets.FIREBASE_APP_ID }}
+          serviceCredentialsFileContent: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_KEY }}
+          groups: internal-testers
+          file: app/build/outputs/apk/debug/app-debug.apk
+          releaseNotes: "Automated build from GitHub Actions"
 
 
 #      - name: upload artifact to Firebase App Distribution
