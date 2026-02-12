@@ -5,6 +5,7 @@ plugins {
 
     alias(libs.plugins.ksp)
     alias(libs.plugins.dagger.hilt.android)
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -72,4 +73,7 @@ dependencies {
     //hilt
     implementation(libs.hilt.android)
     ksp(libs.hilt.compiler)
+
+    implementation(platform("com.google.firebase:firebase-bom:34.9.0"))
+    implementation("com.google.firebase:firebase-analytics")
 }
