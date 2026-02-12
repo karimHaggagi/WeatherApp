@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "807661636832",
+    "project_id": "kfh-task",
+    "storage_bucket": "kfh-task.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:807661636832:android:c93298f141624f6f6e5485",
+        "android_client_info": {
+          "package_name": "com.example.kfhtask"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCA9Rm8lI3QWyGW-plqyrCptwQGO_T-heI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:807661636832:android:d651fa1dfcbdda996e5485",
+        "android_client_info": {
+          "package_name": "com.example.weatherapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCA9Rm8lI3QWyGW-plqyrCptwQGO_T-heI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
